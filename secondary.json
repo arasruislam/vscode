@@ -1,0 +1,270 @@
+{
+   // ==========================
+   // 🧠 Editor: Font & Layout
+   // ==========================
+   "editor.fontFamily": "'Cascadia Code','Fira Code', 'JetBrains Mono', Consolas, monospace",
+   "editor.fontSize": 18,
+   "editor.fontLigatures": "'calt', 'ss01','ss02', 'ss03', 'ss19', 'ss20'",
+   "editor.fontWeight": "600",
+   "editor.fontVariations": true,
+   "editor.lineHeight": 24,
+   "editor.letterSpacing": 0.5,
+   "editor.tabSize": 2,
+   "editor.wordWrap": "on",
+   "editor.cursorBlinking": "expand",
+   "editor.cursorSmoothCaretAnimation": "on",
+   "editor.smoothScrolling": true,
+   "editor.stickyScroll.enabled": true,
+   "editor.guides.bracketPairs": true,
+ 
+   // ==========================
+   // 💾 File Handling
+   // ==========================
+   "files.autoSave": "afterDelay",
+   "files.autoSaveDelay": 1000,
+   "files.trimTrailingWhitespace": true,
+   "files.insertFinalNewline": true,
+ 
+   // ==========================
+   // ✨ Formatting & Linting
+   // ==========================
+   "editor.formatOnSave": true,
+   "editor.formatOnPaste": true,
+   "editor.formatOnType": true,
+   "editor.defaultFormatter": "esbenp.prettier-vscode",
+   "editor.codeActionsOnSave": {
+     "source.fixAll": "explicit",
+     "source.organizeImports": "explicit"
+   },
+ 
+   // ==========================
+   // 🚀 Code Intelligence
+   // ==========================
+   "editor.quickSuggestions": {
+     "other": true,
+     "comments": false,
+     "strings": true
+   },
+   "editor.parameterHints.enabled": true,
+   "editor.suggestSelection": "first",
+   "editor.tabCompletion": "on",
+ 
+   // ==========================
+   // 🌐 Workbench UI
+   // ==========================
+   "workbench.colorTheme": "Learn with Sumit Official Theme",
+   "workbench.list.smoothScrolling": true,
+   "workbench.iconTheme": "material-icon-theme",
+ 
+   // ==========================
+   // 🖥 Terminal
+   // ==========================
+   "terminal.integrated.defaultProfile.windows": "Git Bash",
+   "terminal.integrated.smoothScrolling": true,
+   "terminal.integrated.env.windows": {},
+   "terminal.integrated.fontFamily": "'Fira Code', monospace",
+   "terminal.integrated.fontSize": 14,
+ 
+   // ==========================
+   // 📦 JS / TS Configuration
+   // ==========================
+   "typescript.preferences.importModuleSpecifier": "non-relative",
+   "javascript.updateImportsOnFileMove.enabled": "always",
+   "javascript.suggest.autoImports": true,
+   "typescript.suggest.autoImports": true,
+   "javascript.implicitProjectConfig.checkJs": true,
+   "js/ts.implicitProjectConfig.strictNullChecks": true,
+ 
+   // ==========================
+   // ✅ ESLint Integration
+   // ==========================
+   "eslint.alwaysShowStatus": true,
+   "eslint.validate": [
+     "javascript",
+     "javascriptreact",
+     "typescript",
+     "typescriptreact"
+   ],
+ 
+   // ==========================
+   // 🍃 MongoDB
+   // ==========================
+   "mongodb.showExplorerWelcomePage": false,
+   "mongodb.defaultConnectionString": "mongodb://localhost:27017",
+ 
+   // ==========================
+   // 📝 TODO / FIXME Highlights
+   // ==========================
+   "todo-tree.tree.showScanModeButton": false,
+   "todo-tree.general.tags": ["TODO", "FIXME", "BUG", "HACK", "NOTE"],
+   "todo-tree.highlights.defaultHighlight": {
+     "type": "text-and-comment",
+     "icon": "check",
+     "foreground": "#FFB400",
+     "background": "#1E1E1E",
+     "opacity": 80
+   },
+ 
+   // ==========================
+   // 🧩 GitLens
+   // ==========================
+   "gitlens.currentLine.enabled": true,
+   "gitlens.hovers.currentLine.over": "line",
+   "gitlens.codeLens.enabled": true,
+ 
+   // ==========================
+   // ⚙ C / C++ Settings
+   // ==========================
+   "C_Cpp.default.cppStandard": "c++20",
+   "C_Cpp.default.cStandard": "c11",
+ 
+   // ==========================
+   // 🔁 Code Runner
+   // ==========================
+   "code-runner.runInTerminal": true,
+   "code-runner.saveAllFilesBeforeRun": true,
+   "code-runner.terminalRoot": "/",
+   "code-runner.executorMapByGlob": {
+     "pom.xml": "cd $dir && mvn clean package"
+   },
+ 
+   // ==========================
+   // 🖍 Semantic Highlighting
+   // ==========================
+   "editor.semanticHighlighting.enabled": true,
+   "editor.tokenColorCustomizations": {
+     "textMateRules": [
+       {
+         "scope": ["keyword.control", "keyword", "keyword.operator", "keyword.other"],
+         "settings": {
+           "foreground": "#F28B25",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": ["storage.type", "support.type.primitive", "support.type.builtin"],
+         "settings": {
+           "foreground": "#FFCC00",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": ["constant.language", "constant.language.boolean", "constant.language.null", "constant.language.undefined"],
+         "settings": {
+           "foreground": "#FF6E6E",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": "variable.parameter",
+         "settings": {
+           "foreground": "#FAD000",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": ["support.function", "support.constant"],
+         "settings": {
+           "foreground": "#7FDBCA",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": "entity.name.function",
+         "settings": {
+           "foreground": "#00C8C8",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": "entity.name.type.class",
+         "settings": {
+           "foreground": "#FF8C00",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": [
+           "punctuation.definition.parameters.begin",
+           "punctuation.definition.parameters.end",
+           "punctuation.section.parens.begin",
+           "punctuation.section.parens.end",
+           "punctuation.section.brackets.begin",
+           "punctuation.section.brackets.end",
+           "punctuation.section.block.begin",
+           "punctuation.section.block.end"
+         ],
+         "settings": {
+           "foreground": "#89DDFF",
+           "fontStyle": "bold"
+         }
+       },
+       {
+         "scope": "keyword.operator",
+         "settings": {
+           "foreground": "#FFD700",
+           "fontStyle": "bold"
+         }
+       }
+     ]
+   },
+ 
+   // ==========================
+   // ⚙ Code Runner Executables
+   // ==========================
+   "code-runner.executorMap": {
+     "javascript": "node",
+     "typescript": "ts-node",
+     "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+     "python": "python -u",
+     "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe",
+     "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe",
+     "zig": "zig run",
+     "go": "go run",
+     "php": "php",
+     "ruby": "ruby",
+     "swift": "swift",
+     "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+     "dart": "dart",
+     "haskell": "runghc",
+     "julia": "julia",
+     "r": "Rscript",
+     "perl": "perl",
+     "perl6": "perl6",
+     "lua": "lua",
+     "groovy": "groovy",
+     "scala": "scala",
+     "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+     "shellscript": "bash",
+     "powershell": "powershell -ExecutionPolicy ByPass -File",
+     "bat": "cmd /c",
+     "fsharp": "fsi",
+     "csharp": "scriptcs",
+     "vbscript": "cscript //Nologo",
+     "coffeescript": "coffee",
+     "crystal": "crystal",
+     "ocaml": "ocaml",
+     "applescript": "osascript",
+     "clojure": "lein exec",
+     "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+     "racket": "racket",
+     "scheme": "csi -script",
+     "ahk": "autohotkey",
+     "autoit": "autoit3",
+     "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+     "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+     "nim": "nim compile --verbosity:0 --hints:off --run",
+     "lisp": "sbcl --script",
+     "kit": "kitc --run",
+     "v": "v run",
+     "sass": "sass --style expanded",
+     "scss": "scss --style expanded",
+     "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+     "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+     "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+     "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+     "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+     "sml": "cd $dir && sml $fileName"
+   }
+ }
+ 

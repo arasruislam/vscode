@@ -1,0 +1,254 @@
+{
+  // ==== C / C++ Language Support ====
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.cStandard": "c11",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+
+  // ==== Terminal Settings ====
+  "terminal.integrated.defaultProfile.windows": "application/iterm2", // Custom terminal
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1",
+    "FIG_NEW_SESSION": "1"
+  },
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontWeightBold": "bold",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 2,
+  "terminal.integrated.cursorStyleInactive": "underline",
+
+  // ==== Code Runner Config ====
+  "code-runner.runInTerminal": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.terminalRoot": "/",
+  "code-runner.executorMapByGlob": {
+    "pom.xml": "cd $dir && mvn clean package"
+  },
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "zig": "zig run",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python3 -u",
+    "perl": "perl",
+    "perl6": "perl6",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "scriptcs",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "dart": "dart",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "haskell": "runghc",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "lisp": "sbcl --script",
+    "kit": "kitc --run",
+    "v": "v run",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sml": "cd $dir && sml $fileName",
+    // "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe <input.txt> output.txt",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe",
+    // "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe"
+    // "cpp": "cd $dir && g++ -std=c++11 $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe <input.txt> output.txt"
+
+    // updated c++ with timeout
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.exe && timeout 15s $dir$fileNameWithoutExt.exe < input.txt > output.txt || (echo -n > output.txt && echo 'Time Limit Gone')"
+  },
+
+  "code-runner.executorMapByFileExtension": {
+    ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+    ".vbs": "cscript //Nologo",
+    ".scala": "scala",
+    ".jl": "julia",
+    ".cr": "crystal",
+    ".ml": "ocaml",
+    ".zig": "zig run",
+    ".exs": "elixir",
+    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    ".rkt": "racket",
+    ".scm": "csi -script",
+    ".ahk": "autohotkey",
+    ".au3": "autoit3",
+    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    ".kts": "kotlinc -script",
+    ".dart": "dart",
+    ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    ".hs": "runhaskell",
+    ".nim": "nim compile --verbosity:0 --hints:off --run",
+    ".csproj": "dotnet run --project",
+    ".fsproj": "dotnet run --project",
+    ".lisp": "sbcl --script",
+    ".kit": "kitc --run",
+    ".v": "v run",
+    ".vsh": "v run",
+    ".sass": "sass --style expanded",
+    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    ".ring": "ring",
+    ".sml": "cd $dir && sml $fileName",
+    ".mojo": "mojo run",
+    ".erl": "escript",
+    ".spwn": "spwn build",
+    ".pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    ".gleam": "gleam run -m $fileNameWithoutExt"
+  },
+
+  // ==== Editor Behavior ====
+  "editor.fontFamily": "'JetBrains Mono NL', 'Fira Code', 'Cascadia Code'",
+  "editor.fontSize": 14,
+  "editor.fontWeight": 600,
+  "editor.tabSize": 3,
+  "editor.wordWrap": "on",
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "expand",
+  "editor.fontLigatures": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Default formatter (fallback)
+
+  // ==== Auto Fix and Formatting on Save ====
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "always"
+  },
+
+  // ==== Language-specific Formatting ====
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always"
+    }
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+
+  // ==== Django, HTML, Emmet Settings ====
+  "files.associations": {
+    "**/templates/*.html": "django-html",
+    "**/*.html": "html"
+  },
+  "[django-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html",
+    "html": "html"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.useInlineCompletions": true,
+
+  // ==== UI / Theme / Icons ====
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "window.zoomLevel": 0.7,
+
+  // ==== Git and Files ====
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 0,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
+  "git.enableSmartCommit": true,
+
+  // ==== Notebook and Rainbow Brackets ====
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  "RainbowBrackets.depreciation-notice": false,
+
+  // ==== Code Effects (Power Mode) ====
+  //   "powermode.enabled": true,
+  //   "powermode.combo.location": "off",
+  //   "powermode.shake.intensity": 0,
+  //   "powermode.presets": "flames",
+  //   "powermode.combo.counterSize": 0,
+  //   "powermode.explosions.size": 3,
+  //   "powermode.shake.enabled": false,
+
+  // ==== Pieces Extension (AI Code Snippets) ====
+  //   "pieces.cloudCapabilities": "Blended",
+  //   "pieces.telemetry": true,
+
+  // ==== AI, Autocomplete, Cloud Settings ====
+  //   "tabnine.experimentalAutoImports": true,
+  "path-autocomplete.extensionOnImport": true,
+  //   "cloudcode.duetAI.project": "tensile-virtue-407500",
+
+  //   ==== Syntax Highlight Customization ====
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["variable.parameter", "punctuation.parenthesis"],
+        "settings": {
+          "fontStyle": "italic bold",
+          "foreground": "#4FC3F7"
+        }
+      }
+    ]
+  },
+
+  // ==== File Nesting in Explorer (optional) ====
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.tsx": "${capture}.ts",
+    "tsconfig.json": "tsconfig.*.json",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*"
+  },
+  "console-ninja.featureSet": "Community"
+}
