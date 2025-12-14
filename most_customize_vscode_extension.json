@@ -1,0 +1,12 @@
+code --install-extension formulahendry.code-runner
+code --install-extension ms-vscode.cpptools
+code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension eamodio.gitlens
+code --install-extension golang.go
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension Catppuccin.catppuccin-vsc
+code --install-extension iocave.custom-ui-style
+code --install-extension brandonkirbyson.vscode-animations
+code --install-extension 2gua.rainbow-brackets

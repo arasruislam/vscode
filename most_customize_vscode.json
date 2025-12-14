@@ -1,0 +1,602 @@
+{
+  // ============================================================
+  // 🧩 LANGUAGE CONFIGURATIONS
+  // ============================================================
+
+  // ---- C / C++ Language Support ----
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.cStandard": "c11",
+
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+
+  // ---- Other Language-Specific Formatters ----
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ============================================================
+  // 🧮 CODE RUNNER SETTINGS
+  // ============================================================
+
+  "code-runner.runInTerminal": true,
+  // 🖥️ কোড run করলে built-in Output panel নয়, terminal-এ execute হবে
+  // → terminal-এর stdin/stdout পুরোপুরি support করে
+
+  "code-runner.saveAllFilesBeforeRun": true,
+  // 💾 কোড run করার আগে সব open files auto save হবে
+
+  "code-runner.saveFileBeforeRun": true,
+  // 💾 শুধুমাত্র current file run করার আগে auto save হবে
+  // (উপরের সাথে combined, safety net)
+
+  "code-runner.terminalRoot": "/",
+  // 🏠 Terminal run-এর default root directory
+  // "/" মানে project root বা filesystem root (তোমার OS অনুযায়ী)
+
+  // ---- Executor Maps ----
+  "code-runner.executorMapByGlob": {
+    "pom.xml": "cd $dir && mvn clean package"
+  },
+
+  "code-runner.executorMap": {
+    "javascript": "node",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "zig": "zig run",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python3 -u",
+    "perl": "perl",
+    "perl6": "perl6",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "scriptcs",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "dart": "dart",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "haskell": "runghc",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "lisp": "sbcl --script",
+    "kit": "kitc --run",
+    "v": "v run",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sml": "cd $dir && sml $fileName",
+
+    // C Program
+    // "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe <input.txt> output.txt",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe",
+
+    // C++
+    "cpp": "cd $dir && g++ -std=c++20 $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe"
+    // "cpp": "cd $dir && g++ -std=c++11 $fileName -o $fileNameWithoutExt.exe && $dir$fileNameWithoutExt.exe <input.txt> output.txt"
+
+    // updated C++ with timeout
+    // "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt.exe && timeout 15s $dir$fileNameWithoutExt.exe < input.txt > output.txt || (echo -n > output.txt && echo 'Time Limit Gone')"
+  },
+
+  "code-runner.executorMapByFileExtension": {
+    ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+    ".vbs": "cscript //Nologo",
+    ".scala": "scala",
+    ".jl": "julia",
+    ".cr": "crystal",
+    ".ml": "ocaml",
+    ".zig": "zig run",
+    ".exs": "elixir",
+    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    ".rkt": "racket",
+    ".scm": "csi -script",
+    ".ahk": "autohotkey",
+    ".au3": "autoit3",
+    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    ".kts": "kotlinc -script",
+    ".dart": "dart",
+    ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    ".hs": "runhaskell",
+    ".nim": "nim compile --verbosity:0 --hints:off --run",
+    ".csproj": "dotnet run --project",
+    ".fsproj": "dotnet run --project",
+    ".lisp": "sbcl --script",
+    ".kit": "kitc --run",
+    ".v": "v run",
+    ".vsh": "v run",
+    ".sass": "sass --style expanded",
+    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    ".ring": "ring",
+    ".sml": "cd $dir && sml $fileName",
+    ".mojo": "mojo run",
+    ".erl": "escript",
+    ".spwn": "spwn build",
+    ".pkl": "cd $dir && pkl eval -f yaml $fileName -o $fileNameWithoutExt.yaml",
+    ".gleam": "gleam run -m $fileNameWithoutExt"
+  },
+
+  // ============================================================
+  // 💻 TERMINAL SETTINGS
+  // ============================================================
+
+  "terminal.integrated.defaultProfile.windows": "application/iterm2",
+  // 🖥️ Windows এ default terminal profile হিসেবে iTerm2 ব্যবহার হবে
+  // (যদি Windows subsystem বা iTerm2 setup থাকে)
+
+  "terminal.integrated.env.osx": {
+    "Q_NEW_SESSION": "1",
+    "FIG_NEW_SESSION": "1"
+  },
+  // 🍎 macOS-terminal environment variables
+  // নতুন session শুরু করার সময় GUI apps (যেমন Fig) কে detect করার জন্য
+
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  // 🔤 Terminal-এর font set করে (programming + ligatures friendly)
+
+  "terminal.integrated.fontWeight": "normal",
+  // 🔠 Terminal-এর normal font weight
+
+  "terminal.integrated.fontWeightBold": "bold",
+  // 🔠 Terminal-এ bold text-এর weight
+
+  "terminal.integrated.cursorStyle": "line",
+  // 🖱 Terminal cursor style set করে → vertical line
+
+  "terminal.integrated.cursorWidth": 2,
+  // 🖱 Cursor-এর width 2px (visibility better)
+
+  "terminal.integrated.cursorStyleInactive": "underline",
+  // 🖱 Terminal inactive cursor (focus lost) → underline style
+
+  // ============================================================
+  // ✏️ EDITOR SETTINGS
+  // ============================================================
+
+  "editor.fontFamily": "'Cascadia Code', 'Fira Code', 'JetBrains Mono', Consolas, monospace",
+  // 🔤 Editor-এর primary fonts set করে
+  // multiple fallback fonts, coding-friendly + ligatures support
+
+  "editor.fontSize": 14,
+  // 🔠 Font size set করে → readable + compact
+
+  "editor.fontWeight": 600,
+  // 🔠 Font weight (600 → semi-bold), readability বাড়ায়
+
+  "editor.wordWrap": "on",
+  // ↩️ Code line auto-wrap হবে, horizontal scroll কমে
+
+  "editor.formatOnType": true,
+  // ⌨️ টাইপ করার সময় code auto-format হবে
+  // যেমন ;, }, ) type করলে indentation ঠিক হয়
+
+  "editor.formatOnSave": true,
+  // 💾 File save করার সময় code auto-format হবে
+
+  "editor.formatOnPaste": true,
+  // 📋 Code paste করলে auto-format হবে
+
+  "editor.cursorSmoothCaretAnimation": "on",
+  // ✨ Cursor movement smooth animation
+
+  "editor.cursorBlinking": "expand",
+  // ✨ Cursor blink style → expand (aesthetic)
+
+  "editor.fontLigatures": true,
+  // ⚡ Programming ligatures enable করে
+  // যেমন =>, !=, === ইত্যাদি সুন্দর single glyph
+
+  "editor.linkedEditing": true,
+  // 🔗 HTML/XML tag edit করলে opening & closing tag auto-edit হবে
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 🧹 Default formatter set করে → Prettier
+  // Save / type / paste সব সময়ে consistent formatting
+
+  // ---- Code Actions & Auto Fix ----
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    // 📦 ফাইল save করার সময় automatically import statements organize করবে
+    // unused imports remove হবে, imports alphabetical বা project style অনুযায়ী সাজানো হবে
+
+    "source.fixAll.eslint": "always"
+    // 🧹 ফাইল save করার সময় ESLint rule অনুযায়ী সব fixable issues auto-fix করবে
+    // যেমন spacing, semi-colon, quotes, indentation ইত্যাদি
+  },
+
+  // ============================================================
+  // 🧱 HTML / Javascript / React / DJANGO / EMMET SETTINGS
+  // ============================================================
+
+  "files.associations": {
+    "**/templates/*.html": "django-html",
+    // 🗂️ যেকোনো templates folder-এর .html ফাইলকে Django template হিসেবে treat করবে
+    // syntax highlighting + snippets Django rules অনুযায়ী
+
+    "**/*.html": "html"
+    // 🏷️ বাকি সব .html ফাইল normal HTML হিসেবে treat করবে
+  },
+
+  "emmet.includeLanguages": {
+    "django-html": "html",
+    "html": "html"
+    // ⚡ Emmet shortcuts (.div>ul>li etc.) Django template এবং HTML দুইতেই enable করে
+  },
+
+  "emmet.showSuggestionsAsSnippets": true,
+  // 📝 Emmet suggestions VS Code IntelliSense suggestions হিসেবে দেখাবে
+  // দ্রুত coding shortcut possible
+
+  "emmet.useInlineCompletions": true,
+  // ⬇️ Emmet inline completions enable করে → tab press করলে snippet auto expand হয়
+
+  // ============================================================
+  // 🎨 THEME / UI / ICONS / Workbench
+  // ============================================================
+  "workbench.colorTheme": "Catppuccin Mocha",
+  // 🎨 VS Code-এর পুরো রঙের থিম সেট করে (এখানে Catppuccin Mocha – dark aesthetic theme)
+  "workbench.iconTheme": "icons",
+  // 📁 ফাইল ও ফোল্ডারের icon theme নির্ধারণ করে
+  "workbench.startupEditor": "none",
+  // 🚀 VS Code খুললে welcome page / recent files না দেখিয়ে ফাঁকা editor খুলে
+  "workbench.activityBar.location": "hidden",
+  // 📌 বাম পাশের Activity Bar (Explorer, Search, Git icons) লুকিয়ে রাখে
+  "workbench.editor.showTabs": "single",
+  // 🗂 একাধিক ফাইল খোলা থাকলেও শুধু active ফাইলের একটি tab দেখায়
+  "workbench.statusBar.visible": false,
+  // 📉 নিচের Status Bar পুরোপুরি লুকিয়ে দেয়
+  "workbench.tips.enabled": false,
+  // 💡 VS Code-এর tips / hints popup বন্ধ করে
+  "workbench.sideBar.location": "right",
+  // 📂 Explorer / Sidebar ডান পাশে সরিয়ে নেয়
+  "workbench.tree.enableStickyScroll": false,
+  // 🌲 ফোল্ডার ট্রি স্ক্রল করলে উপরে ফোল্ডার নাম আটকে রাখা বন্ধ করে
+  "workbench.tree.indent": 8,
+  // ↳ ফোল্ডার ট্রি-তে nested items গুলোর indentation বাড়ায় (spacing)
+  "workbench.colorCustomizations": {
+    // 🎨 নির্দিষ্ট UI element-এর রঙ customize করার জন্য
+
+    "editorCursor.background": "#000000",
+    // 🖱 Cursor-এর background রঙ (gradient থাকলে তার পেছনের রঙ)
+
+    "editorOverviewRuler.wordHighlightStrongForeground": "#0000",
+    "editorOverviewRuler.selectionHighlightForeground": "#0000",
+    "editorOverviewRuler.rangeHighlightForeground": "#0000",
+    "editorOverviewRuler.wordHighlightForeground": "#0000",
+    "editorOverviewRuler.bracketMatchForeground": "#0000",
+    "editorOverviewRuler.findMatchForeground": "#0000",
+    "editorOverviewRuler.modifiedForeground": "#0000",
+    "editorOverviewRuler.deletedForeground": "#0000",
+    "editorOverviewRuler.warningForeground": "#0000",
+    "editorOverviewRuler.addedForeground": "#0000",
+    "editorOverviewRuler.errorForeground": "#0000",
+    "editorOverviewRuler.infoForeground": "#0000",
+    "editorOverviewRuler.border": "#0000",
+    // 📏 ডান পাশের Overview Ruler-এর সব indicator (error, warning, search match)
+    // পুরোপুরি transparent করে দেয় → cleaner look
+
+    "[Catppuccin Mocha]": {
+      "editorSuggestWidget.selectedBackground": "#3A334B"
+      // 📋 Autocomplete suggestion list-এ
+      // selected item-এর background color নির্ধারণ করে
+    }
+  },
+  "explorer.compactFolders": false,
+  // 📁 ফাঁকা বা single-child ফোল্ডার এক লাইনে না দেখিয়ে আলাদা আলাদা করে দেখায়
+  "explorer.confirmDragAndDrop": false,
+  // 🖱 ফাইল drag & drop করলে confirmation dialog দেখাবে না
+  "explorer.confirmDelete": false,
+  // 🗑 ফাইল delete করার সময় "Are you sure?" প্রশ্ন করবে না
+  "explorer.decorations.badges": false,
+  // 🔴 Git / error / number badge (M, U, 1, 2 ইত্যাদি) বন্ধ করে
+
+  // "git.decorations.enabled": false,
+  // 🌿 Git change highlight (green/red/blue) বন্ধ করে
+  // (এখন comment করা আছে, চাইলে enable করা যাবে)
+
+  "editor.minimap.enabled": false,
+  // 🗺 ডান পাশে থাকা minimap (code overview) বন্ধ করে
+  "editor.multiCursorModifier": "ctrlCmd",
+  // 🧬 Multi-cursor ব্যবহার করতে Ctrl (Windows/Linux) বা Cmd (Mac) লাগবে
+  "editor.cursorWidth": 2,
+  // 🖱 Cursor-এর প্রস্থ বাড়ায় (visibility ভালো হয়)
+  "editor.lineHeight": 1.8,
+  // 📏 লাইনের উচ্চতা বাড়ায় → পড়তে আরামদায়ক
+  "editor.stickyScroll.enabled": false,
+  // 📌 function / class নাম উপরে আটকে রাখা বন্ধ করে
+  "editor.colorDecorators": false,
+  // 🎨 CSS color preview (ছোট রঙের box) বন্ধ করে
+  "editor.codeLens": false,
+  // 🔍 function reference / test / implementation info উপরে দেখানো বন্ধ করে
+  "editor.links": false,
+  // 🔗 URL বা path clickable হওয়া বন্ধ করে
+  "editor.matchBrackets": "never",
+  // () {} [] bracket matching highlight বন্ধ করে
+  "editor.parameterHints.enabled": false,
+  // 🧠 function call করার সময় parameter hint popup বন্ধ করে
+  "editor.lightbulb.enabled": "off",
+  // 💡 quick fix / suggestion lightbulb বন্ধ করে
+  "editor.hover.enabled": false,
+  // 🖱 mouse hover করলে info popup দেখানো বন্ধ করে
+  "editor.lineNumbers": "relative",
+  // 🔢 relative line number দেখায় (Vim-style navigation-এর জন্য ভালো)
+  "editor.tabSize": 2,
+  // ➡️ Tab চাপলে 2 space ব্যবহার করবে
+  "editor.detectIndentation": false,
+  // 📐 ফাইল দেখে auto indentation পরিবর্তন করবে না
+  "editor.showFoldingControls": "never",
+  // ⬇️ code fold / unfold icon কখনো দেখাবে না
+  "editor.guides.indentation": false,
+  // │ indentation guide line (vertical dotted line) বন্ধ করে
+  "editor.renderWhitespace": "none",
+  // ␣ space / tab / trailing whitespace দেখাবে না
+  "editor.renderLineHighlight": "none",
+  // 👉 current line highlight বন্ধ করে
+  "editor.occurrencesHighlight": "off",
+  // 🔎 একই শব্দ auto highlight করা বন্ধ করে
+  "editor.selectionHighlight": false,
+  // 🟦 select করা word-এর অন্য occurrence highlight বন্ধ করে
+  "editor.scrollbar.horizontal": "hidden",
+  // ↔ horizontal scrollbar লুকিয়ে রাখে
+  "editor.scrollbar.vertical": "hidden",
+  // ↕ vertical scrollbar লুকিয়ে রাখে
+  "editor.overviewRulerBorder": false,
+  // 📏 overview ruler-এর border বন্ধ করে
+  "editor.hideCursorInOverviewRuler": true,
+  // 🖱 overview ruler-এ cursor marker লুকিয়ে রাখে
+  "editor.quickSuggestions": {
+    "other": "on",
+    // ✨ সাধারণ code লেখার সময় auto suggestion চালু
+    "comments": "off",
+    // 💬 comment-এর ভিতরে suggestion বন্ধ
+    "strings": "on"
+    // 🧵 string-এর ভিতরে suggestion চালু
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  // ⌨️ .  (  ,  <  ইত্যাদি trigger character টাইপ করলে
+  // সাথে সাথে suggestion / autocomplete popup দেখাবে
+  "editor.tabCompletion": "on",
+  // ↹ Tab চাপলে suggestion বা snippet auto complete করবে
+  // (Enter না চাপলেও completion সম্ভব)
+  "editor.snippetSuggestions": "top",
+  // 🧩 snippet গুলোকে suggestion list-এর একদম উপরে দেখায়
+  // → দ্রুত boilerplate insert করা যায়
+  "emmet.triggerExpansionOnTab": true,
+  // ⚡ Emmet abbreviation লিখে Tab চাপলে HTML/CSS expand হবে
+  // উদাহরণ: div.container → Tab → full HTML structure
+  "editor.tokenColorCustomizations": {
+    // 🎨 নির্দিষ্ট syntax element-এর color ও font style customize করার জন্য
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+        // 💬 সব comment italic দেখাবে
+      },
+      {
+        "scope": ["variable.parameter", "punctuation.parenthesis"],
+        "settings": {
+          "fontStyle": "italic bold",
+          "foreground": "#4FC3F7"
+        }
+        // 🧠 function parameter এবং () bracket
+        // italic + bold হবে এবং হালকা নীল রঙে দেখা যাবে
+      }
+    ]
+  },
+
+  "files.trimTrailingWhitespace": true,
+  // 🧹 ফাইল save করার সময় সব extra trailing space (শেষের ফাঁকা space) auto remove করে
+  "files.insertFinalNewline": true,
+  // ⬇️ ফাইলের শেষের line-এ যদি newline না থাকে, save করলে auto add করে
+  "files.autoSave": "afterDelay",
+  // 💾 টাইপ করার পরে কিছু সময় delay দিয়ে ফাইল auto save হবে
+  "update.mode": "none",
+  // 🔄 VS Code নিজে auto update করবে না
+  "extensions.ignoreRecommendations": true,
+  // 🧩 recommended extensions popup আর দেখাবে না
+  "breadcrumbs.enabled": false,
+  // 🧭 editor-এর top bar-এ file path / function breadcrumbs hide করে
+  "scm.diffDecorations": "none",
+  // 🔹 Source Control (Git) এ file diff highlight / inline change markers hide করে
+  "window.zoomLevel": 0.5,
+  // 🔎 editor UI zoom level adjust করে (0.5 → slightly zoomed in)
+  "window.customTitleBarVisibility": "never",
+  // 🏷️ VS Code top title bar completely hide করে
+  // (Custom UI Style / animation-setup জন্য common)
+  "window.titleBarStyle": "native",
+  // 🖥️ OS-native title bar ব্যবহার করে
+
+  "custom-ui-style.electron": {
+    "titleBarStyle": "hiddenInset",
+    // 🏷️ Title bar-এর UI কাস্টমাইজ করে, OS-native title bar পুরোপুরি না দেখিয়ে
+    // "hiddenInset" মানে title bar প্রায় লুকানো, কিন্তু window drag & traffic lights থাকবে
+
+    "trafficLightPosition": {
+      "x": 20,
+      "y": 16
+    }
+    // 🟢🟡🔴 Mac-style window control buttons (close, minimize, maximize) কোথায় প্রদর্শিত হবে
+    // x → horizontal distance, y → vertical distance (pixel অনুযায়ী)
+  },
+
+  "custom-ui-style.stylesheet": {
+    "canvas.decorationsOverviewRuler": "display: none !important",
+    // 🗺️ editor overview ruler-এর decorations (error, warning, highlights) লুকিয়ে দেয়
+
+    ".notification-toast": "box-shadow: none !important",
+    // 🔔 popup notifications-এর shadow effect remove করে, flat look দেয়
+
+    ".quick-input-widget.show-file-icons": "box-shadow: none !important",
+    // 📂 Quick Open / search widget-এর file icons shadow remove করে
+
+    ".quick-input-widget": "top: 25vh !important",
+    // ⬆️ Quick Open / command palette vertical position পরিবর্তন করে
+    // 25% window height থেকে শুরু হবে
+
+    ".quick-input-list .scrollbar": "display: none",
+    // 🔹 Quick Open list-এর scrollbar লুকিয়ে দেয়
+
+    ".monaco-action-bar.quick-input-inline-action-bar": "display: none",
+    // 🛠 Quick input-এর inline actions (buttons) hide করে
+
+    ".editor-widget.find-widget": "box-shadow: none; border-radius: 4px",
+    // 🔍 Find widget-এর shadow remove করে, border-radius 4px করে smooth corner দেয়
+
+    ".quick-input-titlebar": "background: #100B15 !important",
+    // 🎨 Quick input titlebar background কালো/ডার্ক থিমে match করে
+
+    ".monaco-workbench .part.editor > .content .editor-group-container > .title.title-border-bottom:after": "display: none",
+    // 🖱 editor tab-এর নিচের subtle border hide করে
+
+    ".monaco-scrollable-element > .shadow.top": "display: none",
+    // ⬆️ scrollable area top shadow hide করে
+
+    ".sidebar .title-label": "padding: 0 !important",
+    // 📂 sidebar title label-এর padding remove করে tight look দেয়
+
+    ".sidebar": "border: none !important",
+    // 📂 sidebar border hide করে clean layout
+
+    ".monaco-workbench .monaco-list:not(.element-focused):focus:before": "outline: none !important",
+    ".monaco-list-row.focused": "outline: none !important",
+    // 🔹 list row focus outline remove করে, clean selection look
+
+    ".monaco-editor .scroll-decoration": "display: none",
+    // ↕ scrollbar decoration hide করে
+
+    ".title-actions": "display: none !important",
+    // 🏷️ editor title bar actions hide করে
+
+    ".title.show-file-icons .label-container .monaco-icon-label.file-icon": "justify-content: center; padding: 0 !important",
+    ".title.show-file-icons .label-container .monaco-icon-label.codicon-settings-editor-label-icon": "justify-content: center",
+    ".title .monaco-icon-label:after": "margin-right: 0",
+    // 🖼️ file icons alignment এবং spacing ঠিক করে, centered look দেয়
+
+    ".monaco-workbench .part.editor > .content .editor-group-container > .title > .label-container > .title-label": "padding-left: 60px",
+    ".title .monaco-icon-label.file-icon": "margin: 0 60px",
+    // 🖼️ tab label এবং file icon-এর left-right margin adjust করে
+    // clean, centered tabs
+
+    ".monaco-editor .cursors-layer .cursor": "background-image: linear-gradient(135deg, #ffaffc 10%, #DA70D6 100%)"
+    // ✨ cursor কে gradient color দিয়ে flashy / aesthetic look দেয়
+    // Custom animation + VS Code Animations সাথে perfect match
+  },
+  "custom-ui-style.font.sansSerif": "Fira Code",
+  // 🔤 পুরো editor-এর primary font Fira Code হিসেবে set করে
+  // (ligatures + coding aesthetic জন্য best)
+
+  // ============================================================
+  // 🔄 GIT / FILE MANAGEMENT
+  // ============================================================
+
+  "files.autoSaveDelay": 0,
+  // ⏱️ auto-save delay (milliseconds) সেট করে
+  // 0 মানে টাইপ করার সাথে সাথে ফাইল instantly save হবে
+
+  "git.autofetch": true,
+  // 🔄 Git repository থেকে background-এ regular fetch হবে
+  // remote changes check করে update info দেখাবে
+
+  "git.confirmSync": false,
+  // ✅ push/pull বা sync করার সময় confirmation dialog দেখাবে না
+
+  "git.enableSmartCommit": true,
+  // 🧠 commit message না দিলে Git automatically staged changes commit করতে পারবে
+  // (Quick commit workflow)
+
+  "git.openRepositoryInParentFolders": "never",
+  // 🗂️ VS Code কখনো parent folder থেকে repository auto detect করবে না
+  // শুধু current folder-এর Git repo দেখাবে
+
+  // ============================================================
+  // 🧮 NOTEBOOK / EXTENSIONS / MISC
+  // ============================================================
+
+  "notebook.defaultFormatter": "esbenp.prettier-vscode",
+  // 📓 Jupyter / VS Code Notebook cell গুলোর default formatter set করে
+  // এখানে Prettier ব্যবহার করা হচ্ছে → clean, consistent code formatting
+
+  "RainbowBrackets.depreciation-notice": false,
+  // 🌈 Rainbow Brackets extension-এর deprecated notice বা popup বন্ধ করে
+  // warning দেখা যাবে না
+
+  "path-autocomplete.extensionOnImport": true,
+  // 📂 Import statement লিখলে file / folder path auto-complete করবে
+  // উদাহরণ: import {x} from './uti<TAB>' → autocomplete করবে
+
+  // ============================================================
+  // 📁 FILE NESTING RULES
+  // ============================================================
+
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.js",
+    // 🟦 TypeScript (.ts) ফাইলের সাথে auto-nest করে corresponding .js ফাইল
+    // উদাহরণ: app.ts → app.js
+
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    // 🟨 JavaScript (.js) ফাইলের সাথে একই নামের
+    // .js.map, .min.js, এবং .d.ts files group করে দেখায়
+
+    "*.jsx": "${capture}.js",
+    // 🟪 React JSX ফাইলের সাথে same-name .js ফাইল nest করে
+
+    "*.tsx": "${capture}.ts",
+    // 🟫 React TSX ফাইলের সাথে same-name .ts ফাইল nest করে
+
+    "tsconfig.json": "tsconfig.*.json",
+    // 📘 tsconfig.json-এর সাথে সব tsconfig.*.json (যেমন tsconfig.app.json) nested করে দেখায়
+
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    // 📦 package.json-এর সাথে সব lock files nested করে
+    // (npm, yarn, pnpm, bun-এর জন্য)
+
+    "*.sqlite": "${capture}.${extname}-*",
+    "*.db": "${capture}.${extname}-*"
+    // 🗄️ database ফাইল nest করে
+    // উদাহরণ: mydata.sqlite → mydata.sqlite-backup, mydata.db → mydata.db-old
+  },
+
+  // ============================================================
+  // 📁 VSCode Animations
+  // ============================================================
+  "animations.Install-Method": "Custom UI Style",
+  "custom-ui-style.external.imports": [
+    "file:///Users/asru/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.7/dist/updateHandler.js"
+  ],
+  "animations.Enabled": true
+}
