@@ -201,3 +201,6 @@ You should see:
 ## 📸 Screenshots
 
 ![Terminal Screenshots](image.png)
+
+
+## Alternative - Follow the install folder.
