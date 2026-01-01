@@ -203,4 +203,39 @@ You should see:
 ![Terminal Screenshots](image.png)
 
 
-## Alternative - Follow the install folder.
+## Alternative - Follow the install folder for one-command installation
+
+## 📁 Folder structure
+Windows Terminal/
+├── fastfetch/
+├── install/
+│   └── install.ps1
+├── powershell_profile.ps1
+├── settings.json
+
+
+## 🧠 Architecture Overview
+install/install.ps1
+        |
+        +--> winget installs
+        |       - PowerShell 7
+        |       - Windows Terminal
+        |       - oh-my-posh
+        |       - eza / fzf / zoxide
+        |       - fastfetch
+        |       - Nerd Font
+        |
+        +--> Install PowerShell Modules
+        |       - PSReadLine
+        |       - Terminal-Icons
+        |
+        +--> Apply Config Files
+                |
+                +--> powershell_profile.ps1
+                |       -> $PROFILE
+                |
+                +--> settings.json
+                |       -> Windows Terminal LocalState
+                |
+                +--> fastfetch/
+                        -> ~/.config/fastfetch/

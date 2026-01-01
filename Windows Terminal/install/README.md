@@ -80,30 +80,37 @@ If icons are broken → Make sure Nerd Font is selected
 If ls does not work → Restart terminal
 If execution policy fails → Run PowerShell as normal user (not admin)
 
+## 📁 Folder structure
+Windows Terminal/
+├── fastfetch/
+├── install/
+│   └── install.ps1
+├── powershell_profile.ps1
+├── settings.json
 
-flowchart TD
-    A[install/install.ps1<br/>One-Command Installer]
 
-    A --> B[Winget]
-    B --> B1[PowerShell 7]
-    B --> B2[Windows Terminal]
-    B --> B3[CLI Tools<br/>oh-my-posh, eza, fzf,<br/>zoxide, fastfetch]
-    B --> B4[JetBrainsMono Nerd Font]
-
-    A --> C[PowerShell Modules]
-    C --> C1[PSReadLine]
-    C --> C2[Terminal-Icons]
-
-    A --> D[powershell_profile.ps1]
-    D --> D1[PowerShell Profile Path<br/>$PROFILE]
-
-    A --> E[settings.json]
-    E --> E1[Windows Terminal<br/>LocalState/settings.json]
-
-    A --> F[fastfetch config]
-    F --> F1[~/.config/fastfetch/config.jsonc]
-    F --> F2[~/.config/fastfetch/ascii.txt]
-
-    D1 --> G[PowerShell Startup]
-    E1 --> H[Windows Terminal UI]
-    F1 --> G
+## 🧠 Architecture Overview
+install/install.ps1
+        |
+        +--> winget installs
+        |       - PowerShell 7
+        |       - Windows Terminal
+        |       - oh-my-posh
+        |       - eza / fzf / zoxide
+        |       - fastfetch
+        |       - Nerd Font
+        |
+        +--> Install PowerShell Modules
+        |       - PSReadLine
+        |       - Terminal-Icons
+        |
+        +--> Apply Config Files
+                |
+                +--> powershell_profile.ps1
+                |       -> $PROFILE
+                |
+                +--> settings.json
+                |       -> Windows Terminal LocalState
+                |
+                +--> fastfetch/
+                        -> ~/.config/fastfetch/
